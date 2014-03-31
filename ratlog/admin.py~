@@ -1,11 +1,26 @@
 from django.contrib import admin
-from ratlog.models import Rat, Weight, Water, Task, Session, Medication, Vital
+from ratlog.models import Rat, Weight, Cage, Water, Task, Session, Medication, Vital
 
 
 # Register your models here.
-admin.site.register(Rat)
-admin.site.register(Weight)
 
+#Rat
+class CageInline(admin.StackedInline):
+	model = Cage
+	extra = 1
+
+
+class RatAdmin(admin.ModelAdmin):
+	fieldsets = [
+		(None, {'fields':['name', 'strain', 'date_of_birth', 'start_date', 'sex', 'protocol', 'comments']}),
+	]
+	inlines = [CageInline]
+	
+admin.site.register(Rat, RatAdmin)
+
+#Weight
+admin.site.register(Weight)
+admin.site.register(Water)
 
 admin.site.register(Task)
 

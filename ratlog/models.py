@@ -7,8 +7,8 @@ import datetime
 #Used to add a rat to the database
 class Rat(models.Model):
 	name = models.CharField(max_length=15)
-	date_of_birth = models.DateTimeField('Date of Birth', default=timezone.now())
-	start_date = models.DateTimeField('first day of handling',default=timezone.now())
+	start_date = models.DateField('first day of handling')
+	date_of_birth = models.DateField('Date of Birth')
 	
 	strain = models.CharField(max_length=30, default='Long Evans')
 	
@@ -19,18 +19,24 @@ class Rat(models.Model):
 	sex = models.CharField(max_length=1, choices=SEX_CHOICES, default='M')
 	
 	protocol = models.CharField(max_length=50, blank=True)
-	
 	comments = models.CharField(max_length=200, blank=True)
 	
 	def __unicode__(self):
 		return self.name
-	
+
+#Enter the Cage Number of the Rat	
+class Cage(models.Model):
+	rat = models.ForeignKey(Rat)
+	date = models.DateField('When Transferred to Cage')
+	cage = models.IntegerField()
 
 #Enter the rat's weight	
 class Weight(models.Model):
 	rat = models.ForeignKey(Rat)
 	date = models.DateTimeField('Date Weighed',default=timezone.now())
 	weight = models.FloatField()
+	
+	
 	comments = models.CharField(max_length=200, blank=True)
 	
 	def __unicode__(self):
@@ -69,7 +75,6 @@ class Session(models.Model):
 	
 #Water Given to the Rat (If free, enter 1000ml)
 class Water(models.Model):
-	rat = models.ForeignKey(Rat)
 	session = models.ForeignKey(Session)
 	
 	date = models.DateTimeField('Date Water Given',default=timezone.now())
@@ -88,7 +93,7 @@ class Water(models.Model):
 		verbose_name='Time that Water was Freely Given (minutes)',blank=True, null=True)
 		
 	def __unicode__(self):
-		return "{0}: {1}".format(self.rat,self.context)
+		return "{0}: {1}".format(self.session,self.context)
 
 
 
