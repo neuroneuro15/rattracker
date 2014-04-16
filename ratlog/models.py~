@@ -64,16 +64,14 @@ class Session(models.Model):
 
 #Enter the rat's weight	
 class Weight(models.Model):
-	rat = models.ForeignKey(Rat)
 	session = models.ForeignKey(Session)
-	date = models.DateTimeField('Date Weighed',default=timezone.now())
 	weight = models.FloatField()
 	
 	
 	comments = models.CharField(max_length=200, blank=True)
 	
 	def __unicode__(self):
-		return '{0}: {1}g'.format(self.rat, self.weight)
+		return '{0}: {1}g'.format(self.session, self.weight)
 
 
 	
