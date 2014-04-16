@@ -30,18 +30,6 @@ class Cage(models.Model):
 	date = models.DateField('When Transferred to Cage')
 	cage = models.IntegerField()
 
-#Enter the rat's weight	
-class Weight(models.Model):
-	rat = models.ForeignKey(Rat)
-	date = models.DateTimeField('Date Weighed',default=timezone.now())
-	weight = models.FloatField()
-	
-	
-	comments = models.CharField(max_length=200, blank=True)
-	
-	def __unicode__(self):
-		return '{0}: {1}g'.format(self.rat, self.weight)
-
 
 ### Behavior ###
 class Task(models.Model):
@@ -72,6 +60,22 @@ class Session(models.Model):
 	
 	def __unicode__(self):
 		return "{0}: {1} on {2}".format(self.rat, self.task, self.date)
+
+
+#Enter the rat's weight	
+class Weight(models.Model):
+	rat = models.ForeignKey(Rat)
+	session = models.ForeignKey(Session)
+	date = models.DateTimeField('Date Weighed',default=timezone.now())
+	weight = models.FloatField()
+	
+	
+	comments = models.CharField(max_length=200, blank=True)
+	
+	def __unicode__(self):
+		return '{0}: {1}g'.format(self.rat, self.weight)
+
+
 	
 #Water Given to the Rat (If free, enter 1000ml)
 class Water(models.Model):
