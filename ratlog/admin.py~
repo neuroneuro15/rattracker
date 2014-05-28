@@ -1,5 +1,5 @@
 from django.contrib import admin
-from ratlog.models import Rat, Weight, Cage, Water, Task, Session, Medication, Vital
+from ratlog.models import Rat, Weight, Cage, Water, Task, Session, Drug, Medication, Vital
 
 
 # Register your models here.
@@ -39,5 +39,9 @@ class SessionAdmin(admin.ModelAdmin):
 	search_fields = ['rat__name', 'rat__id', 'task__name', 'task__maze_name']
 	
 admin.site.register(Session, SessionAdmin)
+
+#Surgery, Drugs, Medication
+admin.site.register(Drug)
+admin.site.register(Medication)
 
 
