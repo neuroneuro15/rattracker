@@ -87,7 +87,10 @@ class Migration(SchemaMigration):
             ('rat', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['ratlog.Rat'])),
             ('drug', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['ratlog.Drug'])),
             ('date', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2014, 5, 28, 0, 0))),
+            ('dose', self.gf('django.db.models.fields.FloatField')()),
             ('comments', self.gf('django.db.models.fields.TextField')(blank=True)),
+            ('name', self.gf('django.db.models.fields.FloatField')()),
+            ('amount', self.gf('django.db.models.fields.FloatField')()),
         ))
         db.send_create_signal(u'ratlog', ['Medication'])
 
@@ -149,10 +152,13 @@ class Migration(SchemaMigration):
         },
         u'ratlog.medication': {
             'Meta': {'object_name': 'Medication'},
+            'amount': ('django.db.models.fields.FloatField', [], {}),
             'comments': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
             'date': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2014, 5, 28, 0, 0)'}),
+            'dose': ('django.db.models.fields.FloatField', [], {}),
             'drug': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['ratlog.Drug']"}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.FloatField', [], {}),
             'rat': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['ratlog.Rat']"})
         },
         u'ratlog.rat': {

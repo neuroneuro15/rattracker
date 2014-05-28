@@ -116,7 +116,8 @@ class Medication(models.Model):
 	date = models.DateTimeField('Date Administered',default=timezone.now())
 	dose = models.FloatField(verbose_name='Dose Given (ml)') 
 	comments = models.TextField(blank=True)
-	
+	#name = models.FloatField()
+	#amount = models.FloatField()
 	
 
 	
