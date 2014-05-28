@@ -114,8 +114,9 @@ class Medication(models.Model):
 	rat = models.ForeignKey(Rat)
 	drug = models.ForeignKey(Drug)
 	date = models.DateTimeField('Date Administered',default=timezone.now())
-	dose = models.FloatField() 
+	dose = models.FloatField(verbose_name='Dose Given (ml)') 
 	comments = models.TextField(blank=True)
+	name = models.FloatField()
 	
 
 	
