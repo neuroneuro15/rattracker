@@ -116,20 +116,10 @@ class Medication(models.Model):
 	date = models.DateTimeField('Date Administered',default=timezone.now())
 	dose = models.FloatField(verbose_name='Dose Given (ml)') 
 	comments = models.TextField(blank=True)
-	#name = models.FloatField()
-	#amount = models.FloatField()
+	
+	def __unicode__(self):
+		return "{0}: {1} ml {2}".format(self.rat, self.dose, self.drug)
 	
 
-	
-#Rat Vitals, whenever Checked
-class Vital(models.Model):
-	rat = models.ForeignKey(Rat)
-	date = models.DateTimeField('Date Checked',default=timezone.now())
-	heart_rate = models.FloatField(verbose_name='Heart Rate (bpm)',blank=True, null=True)
-	temperature = models.FloatField(verbose_name='Temperature (celsius)',blank=True, null=True)
-	
-	comments = models.CharField(max_length=200, blank=True)
-	
-	
 	
 

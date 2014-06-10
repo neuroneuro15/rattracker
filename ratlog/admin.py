@@ -1,5 +1,5 @@
 from django.contrib import admin
-from ratlog.models import Rat, Weight, Cage, Water, Task, Session, Drug, Medication, Vital
+from ratlog.models import Rat, Weight, Cage, Water, Task, Session, Drug, Medication
 
 
 # Register your models here.
@@ -43,5 +43,4 @@ admin.site.register(Session, SessionAdmin)
 #Surgery, Drugs, Medication
 admin.site.register(Drug)
 admin.site.register(Medication)
-admin.site.register(Vital)
 
