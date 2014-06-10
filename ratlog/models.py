@@ -79,7 +79,7 @@ class Weight(models.Model):
 class Water(models.Model):
 	session = models.ForeignKey(Session)
 	
-	date = models.DateTimeField('Date Water Given',default=timezone.now())
+	#date = models.DateTimeField('Date Water Given',default=timezone.now())
 	
 	CONTEXT_CHOICES = (
 		('Free', 'Free Water'),
